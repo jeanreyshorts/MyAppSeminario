@@ -1,2 +1,10 @@
-// For information on how to create your own theme, please see:
-// http://ionicframework.com/docs/theming/
+:root {
+  --spotify-green: #1DB954;
+  --spotify-black: #121212;
+  --spotify-white: #FFFFFF;
+  --espaciado-base: 1rem;
+}
+
+ion-content {
+  --background: var(--spotify-black);
+}

@@ -1,13 +1,38 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+<ion-header>
+  <ion-toolbar color="success">
+    <ion-title>🎧  Spotify PCA</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <div id="container">
-    <ion-button (click)= "saludar()">saludar</ion-button>
-  </div>
+<ion-content class="spotify-bg" scroll-y="true">
+  <swiper-container
+    pagination="true"
+    loop="true"
+    slides-per-view="1"
+    navigation="true"
+    style="width: 100%; height: 100%;"
+  >
+    <swiper-slide *ngFor="let s of songs">
+      <div class="slide-content ion-text-center">
+        <h2>{{ s.title }}</h2>
+        <img [src]="s.image" [alt]="s.title" style="width: 80%; border-radius: 10px;" />
+        <p>{{ s.description }}</p>
+
+        <!-- Botón para reproducir o cambiar canción -->
+        <ion-button color="dark" expand="block" (click)="playSong(s.preview)">
+          {{ currentUrl === s.preview && isPlaying ? '🔁 Reproducir de nuevo' : '▶ Escuchar Ahora' }}
+        </ion-button>
+
+        <!-- Botón para pausar si esa canción está sonando -->
+        <ion-button
+          color="medium"
+          expand="block"
+          *ngIf="currentUrl === s.preview && isPlaying"
+          (click)="pauseSong()"
+        >
+          ⏸ Pausar
+        </ion-button>
+      </div>
+    </swiper-slide>
+  </swiper-container>
 </ion-content>
