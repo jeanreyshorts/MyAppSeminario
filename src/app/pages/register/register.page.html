@@ -1,0 +1,27 @@
+<ion-content class="ion-padding register-page">
+  <div class="logo">
+    <h1>🎶 Crea tu cuenta</h1>
+  </div>
+
+  <form (ngSubmit)="register()" [formGroup]="form">
+    <ion-item>
+      <ion-input formControlName="email" type="email" placeholder="Correo electrónico"></ion-input>
+    </ion-item>
+    <div *ngIf="form.get('email')?.invalid && form.get('email')?.touched" class="error">
+      Ingresa un correo válido.
+    </div>
+
+    <ion-item>
+      <ion-input formControlName="password" type="password" placeholder="Contraseña"></ion-input>
+    </ion-item>
+    <div *ngIf="form.get('password')?.invalid && form.get('password')?.touched" class="error">
+      La contraseña es obligatoria.
+    </div>
+
+    <ion-button expand="block" type="submit" color="success">Registrarse</ion-button>
+  </form>
+
+  <div class="login-link">
+    <p>¿Ya tienes cuenta? <a routerLink="/login">Inicia sesión</a></p>
+  </div>
+</ion-content>

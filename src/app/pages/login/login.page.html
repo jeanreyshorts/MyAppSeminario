@@ -1,0 +1,24 @@
+<ion-content class="ion-padding login-page">
+  <div class="logo">
+    <h1>🎵 MyMusicApp</h1>
+  </div>
+
+  <form (ngSubmit)="login()" [formGroup]="form">
+    <ion-item>
+      <ion-input formControlName="email" type="email" placeholder="Correo electrónico"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input formControlName="password" type="password" placeholder="Contraseña"></ion-input>
+    </ion-item>
+    <ion-button expand="block" type="submit" color="primary">Iniciar Sesión</ion-button>
+  </form>
+
+  <!-- Botón que redirige a registro -->
+  <ion-button expand="block" color="secondary" (click)="goToRegister()">
+    Crear Cuenta
+  </ion-button>
+
+  <div class="register-link">
+    <p>¿No tienes cuenta? <a routerLink="/register">Regístrate aquí</a></p>
+  </div>
+</ion-content>
